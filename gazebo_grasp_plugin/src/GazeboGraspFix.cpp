@@ -8,6 +8,9 @@
  
 #include <gazebo_grasp_plugin/GazeboGraspFix.h>
 
+#include <ros/ros.h>
+#include <grasp_msgs/GraspedObject.h>
+
 using gazebo::GazeboGraspFix;
 
 
@@ -21,7 +24,8 @@ using gazebo::GazeboGraspFix;
 GZ_REGISTER_MODEL_PLUGIN(GazeboGraspFix)
 
 
-GazeboGraspFix::GazeboGraspFix(){
+GazeboGraspFix::GazeboGraspFix() : _nh("gripper_feedback_plugin")
+{
     InitValues();
 }
 
@@ -212,6 +216,8 @@ void GazeboGraspFix::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
         this->contactSub = this->node->Subscribe(topic,&GazeboGraspFix::OnContact, this, latching);
     }
 
+
+    this->_sensorPublisher = this->_nh.advertise<grasp_msgs::GraspedObject>("/gripper_feedback", 1);    
     update_connection=event::Events::ConnectWorldUpdateEnd(boost::bind(&GazeboGraspFix::OnUpdate, this));
 }
 
@@ -466,6 +472,11 @@ void GazeboGraspFix::OnUpdate() {
         }
 
         std::cout<<"GazeboGraspFix: Attaching "<<objName<<" to gripper "<<graspingGripperName<<"!!!!!!!"<<std::endl;
+
+        grasp_msgs::GraspedObject msg;
+        msg.has_contact = true;
+        msg.name = "";
+        _sensorPublisher.publish(msg);
 
         // Store the array of contact poses which played part in the grip, sorted by colliding link.
         // Filter out all link names of other grippers, otherwise if the other gripper moves

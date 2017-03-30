@@ -8,6 +8,8 @@
 #include <gazebo/transport/TransportTypes.hh>
 #include <stdio.h>
 #include <gazebo_grasp_plugin/GazeboGraspGripper.h>
+#include <ros/ros.h>
+
 // #include <gazebo_grasp_plugin/CollidingPoint.h>
 
 namespace gazebo {
@@ -247,6 +249,9 @@ private:
 
     //last time OnUpdate() was called
     common::Time prevUpdateTime;
+    
+    ros::NodeHandle _nh;
+    ros::Publisher _sensorPublisher;
 };
 
 }
