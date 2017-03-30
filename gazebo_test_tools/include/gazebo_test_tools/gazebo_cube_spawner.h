@@ -19,6 +19,10 @@ public:
             float x, float y, float z, float qx, float qy, float qz, float qw,
             float w=0.05, float h=0.05, float d=0.05, float mass=0.05); 
     
+	void spawnCylinder(const std::string& name, const std::string& frame_id,
+		float x, float y, float z, float qx, float qy, float qz, float qw,
+		float r=0.05, float h=0.1, float mass=0.05); 
+    
     /**
      * \param isCube if true, spawn a cube. If false, spawn cylinder,
      *      where \e w is the radius and \e h is the height (\e d will be ignored).

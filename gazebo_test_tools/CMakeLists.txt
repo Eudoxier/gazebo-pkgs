@@ -96,6 +96,8 @@ add_library(fake_object_recognizer
 
 ## Declare a cpp executable
 add_executable(cube_spawner src/cube_spawner_node.cpp)
+add_executable(cuboid_spawner src/cuboid_spawner_node.cpp)
+add_executable(cylinder_spawner src/cylinder_spawner_node.cpp)
 add_executable(fake_object_recognizer_node src/fake_object_recognizer_node.cpp)
 add_executable(fake_object_recognizer_cmd test/fake_object_recognizer_cmd.cpp)
 add_executable(set_gazebo_physics_client src/SetGazeboPhysicsClient.cpp)
@@ -104,6 +106,8 @@ add_executable(set_gazebo_physics_client src/SetGazeboPhysicsClient.cpp)
 ## as an example, message headers may need to be generated before nodes
 add_dependencies(gazebo_test_tools ${catkin_EXPORTED_TARGETS})
 add_dependencies(cube_spawner ${catkin_EXPORTED_TARGETS})
+add_dependencies(cuboid_spawner ${catkin_EXPORTED_TARGETS})
+add_dependencies(cylinder_spawner ${catkin_EXPORTED_TARGETS})
 add_dependencies(set_gazebo_physics_client ${catkin_EXPORTED_TARGETS})
 
 add_dependencies(fake_object_recognizer gazebo_test_tools_generate_messages_cpp)
