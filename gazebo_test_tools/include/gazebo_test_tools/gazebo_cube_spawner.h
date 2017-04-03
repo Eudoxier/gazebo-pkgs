@@ -17,7 +17,7 @@ public:
     
     void spawnCube(const std::string& name, const std::string& frame_id,
             float x, float y, float z, float qx, float qy, float qz, float qw,
-            float w=0.05, float h=0.05, float d=0.05, float mass=0.05); 
+            float w=0.05, float h=0.05, float d=0.05, float mass=0.05, std::string color="Blue"); 
     
 	void spawnCylinder(const std::string& name, const std::string& frame_id,
 		float x, float y, float z, float qx, float qy, float qz, float qw,
@@ -30,7 +30,7 @@ public:
     void spawnPrimitive(const std::string& name, const bool isCube,
             const std::string& frame_id,
             float x, float y, float z, float qx, float qy, float qz, float qw,
-            float w=0.05, float h=0.05, float d=0.05, float mass=0.05); 
+            float w=0.05, float h=0.05, float d=0.05, float mass=0.05, std::string color="Blue"); 
 
 private:
 

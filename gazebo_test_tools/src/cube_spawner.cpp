@@ -20,23 +20,23 @@ GazeboCubeSpawner::GazeboCubeSpawner(NodeHandle &n) : nh(n){
 
 void GazeboCubeSpawner::spawnCube(const std::string& name, const std::string& frame_id,
     float x, float y, float z, float qx, float qy, float qz, float qw,
-    float width, float height, float depth, float mass)
+    float width, float height, float depth, float mass, std::string color)
 {
-    spawnPrimitive(name, true, frame_id, x, y, z, qx, qy, qz, qw, width, height, depth, mass);
+    spawnPrimitive(name, true, frame_id, x, y, z, qx, qy, qz, qw, width, height, depth, mass, color);
 }
 
 void GazeboCubeSpawner::spawnCylinder(const std::string& name, const std::string& frame_id,
     float x, float y, float z, float qx, float qy, float qz, float qw,
     float radius, float height, float mass)
 {
-    spawnPrimitive(name, false, frame_id, x, y, z, qx, qy, qz, qw, radius, height, 0, mass);
+    spawnPrimitive(name, false, frame_id, x, y, z, qx, qy, qz, qw, radius, height, 0, mass, "Blue");
 }
 
 
 void GazeboCubeSpawner::spawnPrimitive(const std::string& name, const bool doCube,
     const std::string& frame_id,
     float x, float y, float z, float qx, float qy, float qz, float qw,
-    float widthOrRadius, float height, float depth, float _mass)
+    float widthOrRadius, float height, float depth, float _mass, std::string color)
 {
 
     geometry_msgs::Pose pose;
@@ -154,7 +154,7 @@ void GazeboCubeSpawner::spawnPrimitive(const std::string& name, const bool doCub
         <material>\
             <script>\
                 <uri>file://media/materials/scripts/gazebo.material</uri> \
-                <name>Gazebo/Blue</name>\
+                <name>Gazebo/"<<color<<"</name>\
             </script>\
         </material>\
           </visual>\

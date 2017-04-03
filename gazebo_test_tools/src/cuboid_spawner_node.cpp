@@ -33,6 +33,6 @@ int main(int argc, char** argv) {
     float dim=0.05;   
     float mass=0.05;
 
-    spawner.spawnCube(name,frame_id,x,y,z,0,0,0,1,dim*r,dim,dim,mass);
+    spawner.spawnCube(name,frame_id,x,y,z,0,0,0,1,dim*r,dim,dim,mass,"Blue");
     return 0;
 }
